@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 
-MAINTAINER Daniel Alan Miller <dalanmiller@rethinkdb.com>
+MAINTAINER Gerry Hernandez <gerry_hd@live.com.mx>
 
 # Add the RethinkDB repository and public key
 # "RethinkDB Packaging <packaging@rethinkdb.com>" http://download.rethinkdb.com/apt/pubkey.gpg
@@ -22,11 +22,6 @@ VOLUME ["/data"]
 WORKDIR /data
 
 RUN pip install rethinkdb
-RUN mkdir -p /backups
-COPY data_dump.tar.gz /backups
-
-RUN rethinkdb restore /backups/data_dump.tar.gz
-
 
 CMD ["rethinkdb", "--bind", "all"]
 
